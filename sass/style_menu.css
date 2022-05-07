@@ -64,6 +64,24 @@ header {
   margin-top: -75px;
 }
 
+.ligne {
+  width: 50px;
+  height: 5px;
+  background-color: #99E2D0;
+  margin-top: -30px;
+}
+
+.conteneur {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: column;
+          flex-direction: column;
+  row-gap: 15px;
+}
+
 .block {
   display: -webkit-box;
   display: -ms-flexbox;
@@ -77,6 +95,10 @@ header {
   margin-left: auto;
   margin-right: auto;
   padding-bottom: 75px;
+}
+
+.block > h2 {
+  font-weight: 300;
 }
 
 .titre {
@@ -97,6 +119,7 @@ header {
   display: flex;
   background-color: white;
   border-radius: 15px;
+  overflow: hidden;
 }
 
 .block__card__texte {
@@ -108,6 +131,7 @@ header {
       -ms-flex-direction: column;
           flex-direction: column;
   margin-left: 2%;
+  width: 80%;
 }
 
 .block__card__texte > h3 {
@@ -117,6 +141,10 @@ header {
 .block__card__texte > p {
   margin-top: 5px;
   margin-bottom: 0px;
+  width: 90%;
+  overflow: hidden;
+  white-space: nowrap;
+  text-overflow: ellipsis;
 }
 
 .block__card__prix {
@@ -124,6 +152,31 @@ header {
   margin-top: 45px;
   margin-left: auto;
   margin-right: 5%;
+}
+
+.block__card__coche {
+  width: 15%;
+  background-color: #99E2D0;
+  border-radius: 0px 15px 15px 0px;
+  text-align: center;
+  display: none;
+}
+
+.block__card__coche > i {
+  margin-right: 10%;
+}
+
+.block__card:hover .block__card__coche {
+  display: block;
+  -webkit-animation: 0.5s coche;
+          animation: 0.5s coche;
+  -webkit-animation-fill-mode: forwards;
+          animation-fill-mode: forwards;
+}
+
+.block__card:hover .block__card__coche > i {
+  -webkit-animation: 0.5s rotation;
+          animation: 0.5s rotation;
 }
 
 .bouton {
@@ -137,10 +190,19 @@ header {
   margin-right: auto;
   padding-left: 5%;
   padding-right: 5%;
+  -webkit-box-shadow: 0px 0px 5px 4px lightgrey;
+          box-shadow: 0px 0px 5px 4px lightgrey;
 }
 
 .bouton > div p {
   text-align: center;
+}
+
+.bouton:hover {
+  background-image: -webkit-gradient(linear, left top, left bottom, from(#fa96de), to(#a578dd));
+  background-image: linear-gradient(#fa96de, #a578dd);
+  -webkit-box-shadow: 0px 0px 5px 6px grey;
+          box-shadow: 0px 0px 5px 6px grey;
 }
 
 footer {
@@ -184,5 +246,163 @@ footer {
 .footer__block__lien > p {
   margin-top: 0px;
   margin-bottom: 15px;
+}
+
+@-webkit-keyframes rotation {
+  /** animation pour la rotation de la coche **/
+  0% {
+    -webkit-transform: rotate(0deg);
+            transform: rotate(0deg);
+  }
+  100% {
+    -webkit-transform: rotate(360deg);
+            transform: rotate(360deg);
+  }
+}
+
+@keyframes rotation {
+  /** animation pour la rotation de la coche **/
+  0% {
+    -webkit-transform: rotate(0deg);
+            transform: rotate(0deg);
+  }
+  100% {
+    -webkit-transform: rotate(360deg);
+            transform: rotate(360deg);
+  }
+}
+
+@-webkit-keyframes coche {
+  /** animation pour la translation de la div de la coche **/
+  0% {
+    -webkit-transform: translate(100%, 0);
+            transform: translate(100%, 0);
+  }
+  100% {
+    -webkit-transform: translate(0, 0);
+            transform: translate(0, 0);
+  }
+}
+
+@keyframes coche {
+  /** animation pour la translation de la div de la coche **/
+  0% {
+    -webkit-transform: translate(100%, 0);
+            transform: translate(100%, 0);
+  }
+  100% {
+    -webkit-transform: translate(0, 0);
+            transform: translate(0, 0);
+  }
+}
+
+@-webkit-keyframes progressif {
+  /** animation pour l'apparation progressive des cartes**/
+  0% {
+    opacity: 0;
+    -webkit-transform: translate(0, 50%);
+            transform: translate(0, 50%);
+  }
+  100% {
+    opacity: 1;
+    -webkit-transform: translate(0, 0);
+            transform: translate(0, 0);
+  }
+}
+
+@keyframes progressif {
+  /** animation pour l'apparation progressive des cartes**/
+  0% {
+    opacity: 0;
+    -webkit-transform: translate(0, 50%);
+            transform: translate(0, 50%);
+  }
+  100% {
+    opacity: 1;
+    -webkit-transform: translate(0, 0);
+            transform: translate(0, 0);
+  }
+}
+
+.entrees {
+  -webkit-animation: 1s progressif;
+          animation: 1s progressif;
+  -webkit-animation-fill-mode: forwards;
+          animation-fill-mode: forwards;
+}
+
+.plats {
+  -webkit-animation: 2s progressif;
+          animation: 2s progressif;
+  -webkit-animation-fill-mode: forwards;
+          animation-fill-mode: forwards;
+}
+
+.desserts {
+  -webkit-animation: 3s progressif;
+          animation: 3s progressif;
+  -webkit-animation-fill-mode: forwards;
+          animation-fill-mode: forwards;
+}
+
+.fa-check-circle {
+  color: white;
+  margin-left: 10%;
+  margin-top: 25px;
+}
+
+@-webkit-keyframes coeur {
+  /** animation pour le remplissage progressif du coeur **/
+  0% {
+    font-weight: bold;
+    color: white;
+  }
+  100% {
+    font-weight: bold;
+    color: #9356DC;
+  }
+}
+
+@keyframes coeur {
+  /** animation pour le remplissage progressif du coeur **/
+  0% {
+    font-weight: bold;
+    color: white;
+  }
+  100% {
+    font-weight: bold;
+    color: #9356DC;
+  }
+}
+
+.fa-heart:hover {
+  -webkit-animation: 1s coeur;
+          animation: 1s coeur;
+  -webkit-animation-fill-mode: forwards;
+          animation-fill-mode: forwards;
+}
+
+@media only screen and (min-width: 768px) {
+  .conteneur {
+    display: -webkit-box;
+    display: -ms-flexbox;
+    display: flex;
+    -webkit-box-orient: horizontal;
+    -webkit-box-direction: normal;
+        -ms-flex-direction: row;
+            flex-direction: row;
+    -webkit-box-pack: justify;
+        -ms-flex-pack: justify;
+            justify-content: space-between;
+    -webkit-box-align: center;
+        -ms-flex-align: center;
+            align-items: center;
+  }
+  .block__card {
+    width: 30%;
+  }
+  .bouton {
+    width: 10%;
+  }
 }
 /*# sourceMappingURL=style_menu.css.map */

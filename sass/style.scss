@@ -1,5 +1,6 @@
 body {
     font-family: 'Roboto' , sans-serif;
+ 
 }
 
 .shrik{
@@ -10,6 +11,36 @@ a {
     text-decoration: none;
     margin: 0;
     padding: 0;
+    color: black;
+}
+
+.loader{ 
+    position: absolute;
+    top:0;
+    left:0;
+    bottom:0;
+    right:0;
+    height:100%;
+    width:100%;
+    background-color: white;
+    opacity: 1;
+    z-index: 2;
+    animation: 2s loader;
+    animation-fill-mode: forwards;
+
+    &__spinner {
+        position: absolute;
+        left: 50%;
+        top: 50%;
+        z-index: 3;
+        width: 120px;
+        height: 120px;
+        margin: -76px 0 0 -76px;
+        border: 16px solid #99E2D0;
+        border-radius: 50%;
+        border-top: 16px solid #FF79DA;
+        animation: spin 2s linear infinite;
+    }
 }
 
 .header{
@@ -64,6 +95,12 @@ a {
         border-radius: 30px;
         padding-left:5%;
         padding-right: 5%; 
+        box-shadow: 0px 0px 5px 4px lightgrey;
+
+        &:hover {
+            background-image: linear-gradient(#fa96de,#a578dd);
+            box-shadow: 0px 0px 5px 6px grey;
+        }
     }
 }
 
@@ -125,6 +162,24 @@ a {
     margin-right: 5%;
 }
 
+.nouveau {
+    position: absolute;
+    right: 5%;
+    top: 5%;
+    background-color:#99E2D0;
+    color: green;
+    text-align: center;
+    font-weight: bold;
+    padding-top: 2%;
+    padding-bottom: 2%;
+    padding-left: 5%;
+    padding-right: 5%;
+
+    > p {
+        margin: 0;
+    }
+}
+
 .restaurants {
     width: 100%;
     background-color: whitesmoke;
@@ -146,6 +201,7 @@ a {
         margin-right: auto;
 
         &__card {
+            position: relative;
             overflow: hidden;
             border-radius: 20px;
             width: 100%;
@@ -188,7 +244,7 @@ a {
     }
 }
 
-@keyframes coeur {
+@keyframes coeur { /** animation pour le remplissage progressif du coeur **/
     0% {font-weight: bold; color:white}
     100% { font-weight: bold; color: #9356DC;}
 }
@@ -225,6 +281,33 @@ footer {
         > p {
             margin-top: 0px;
             margin-bottom: 15px;
+        }
+    }
+}
+
+@keyframes spin {
+    0% { transform: rotate(0deg); }
+    100% { transform: rotate(360deg); }
+}
+
+@keyframes loader {
+    80% {opacity: 1; z-index: 2;}
+    100% {opacity: 0; z-index: -2;}
+} 
+
+@media only screen and (min-width:768px) {
+
+    .restaurants__block {
+        flex-direction: row;
+        flex-wrap: wrap;
+        justify-content: space-between;
+
+        &__card {
+            width: 45%;
+
+            &__img {
+                height: 400px;
+            }
         }
     }
 }

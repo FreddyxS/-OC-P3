@@ -10,6 +10,39 @@ a {
   text-decoration: none;
   margin: 0;
   padding: 0;
+  color: black;
+}
+
+.loader {
+  position: absolute;
+  top: 0;
+  left: 0;
+  bottom: 0;
+  right: 0;
+  height: 100%;
+  width: 100%;
+  background-color: white;
+  opacity: 1;
+  z-index: 2;
+  -webkit-animation: 2s loader;
+          animation: 2s loader;
+  -webkit-animation-fill-mode: forwards;
+          animation-fill-mode: forwards;
+}
+
+.loader__spinner {
+  position: absolute;
+  left: 50%;
+  top: 50%;
+  z-index: 3;
+  width: 120px;
+  height: 120px;
+  margin: -76px 0 0 -76px;
+  border: 16px solid #99E2D0;
+  border-radius: 50%;
+  border-top: 16px solid #FF79DA;
+  -webkit-animation: spin 2s linear infinite;
+          animation: spin 2s linear infinite;
 }
 
 .header__logo {
@@ -78,6 +111,15 @@ a {
   border-radius: 30px;
   padding-left: 5%;
   padding-right: 5%;
+  -webkit-box-shadow: 0px 0px 5px 4px lightgrey;
+          box-shadow: 0px 0px 5px 4px lightgrey;
+}
+
+.explication__bouton:hover {
+  background-image: -webkit-gradient(linear, left top, left bottom, from(#fa96de), to(#a578dd));
+  background-image: linear-gradient(#fa96de, #a578dd);
+  -webkit-box-shadow: 0px 0px 5px 6px grey;
+          box-shadow: 0px 0px 5px 6px grey;
 }
 
 .fonctionnement {
@@ -157,6 +199,24 @@ a {
   margin-right: 5%;
 }
 
+.nouveau {
+  position: absolute;
+  right: 5%;
+  top: 5%;
+  background-color: #99E2D0;
+  color: green;
+  text-align: center;
+  font-weight: bold;
+  padding-top: 2%;
+  padding-bottom: 2%;
+  padding-left: 5%;
+  padding-right: 5%;
+}
+
+.nouveau > p {
+  margin: 0;
+}
+
 .restaurants {
   width: 100%;
   background-color: whitesmoke;
@@ -187,6 +247,7 @@ a {
 }
 
 .restaurants__block__card {
+  position: relative;
   overflow: hidden;
   border-radius: 20px;
   width: 100%;
@@ -241,6 +302,7 @@ a {
 }
 
 @-webkit-keyframes coeur {
+  /** animation pour le remplissage progressif du coeur **/
   0% {
     font-weight: bold;
     color: white;
@@ -252,6 +314,7 @@ a {
 }
 
 @keyframes coeur {
+  /** animation pour le remplissage progressif du coeur **/
   0% {
     font-weight: bold;
     color: white;
@@ -310,5 +373,69 @@ footer {
 .footer__block__lien > p {
   margin-top: 0px;
   margin-bottom: 15px;
+}
+
+@-webkit-keyframes spin {
+  0% {
+    -webkit-transform: rotate(0deg);
+            transform: rotate(0deg);
+  }
+  100% {
+    -webkit-transform: rotate(360deg);
+            transform: rotate(360deg);
+  }
+}
+
+@keyframes spin {
+  0% {
+    -webkit-transform: rotate(0deg);
+            transform: rotate(0deg);
+  }
+  100% {
+    -webkit-transform: rotate(360deg);
+            transform: rotate(360deg);
+  }
+}
+
+@-webkit-keyframes loader {
+  80% {
+    opacity: 1;
+    z-index: 2;
+  }
+  100% {
+    opacity: 0;
+    z-index: -2;
+  }
+}
+
+@keyframes loader {
+  80% {
+    opacity: 1;
+    z-index: 2;
+  }
+  100% {
+    opacity: 0;
+    z-index: -2;
+  }
+}
+
+@media only screen and (min-width: 768px) {
+  .restaurants__block {
+    -webkit-box-orient: horizontal;
+    -webkit-box-direction: normal;
+        -ms-flex-direction: row;
+            flex-direction: row;
+    -ms-flex-wrap: wrap;
+        flex-wrap: wrap;
+    -webkit-box-pack: justify;
+        -ms-flex-pack: justify;
+            justify-content: space-between;
+  }
+  .restaurants__block__card {
+    width: 45%;
+  }
+  .restaurants__block__card__img {
+    height: 400px;
+  }
 }
 /*# sourceMappingURL=style.css.map */
